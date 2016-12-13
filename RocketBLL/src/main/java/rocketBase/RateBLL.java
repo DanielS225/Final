@@ -42,7 +42,6 @@ public class RateBLL {
 	// https://poi.apache.org/apidocs/org/apache/poi/ss/formula/functions/FinanceLib.html
 
 	public static double getPayment(double r, double n, double p, double f, boolean t) {
-		return FinanceLib.pmt(r, n, p, f, t); // TODO - what actually needs to
-												// be done?
+		return FinanceLib.pmt(r, n, p, f, t); // r = rate, n = number of periods, p = present value, f = future value, t = due at beginning?
 	}
 }

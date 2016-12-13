@@ -15,6 +15,7 @@ public class rate_test {
 		} catch (RateException e) {
 			System.out.println(e.getMessage());
 		}
+		test = null;
 	}
 
 	@Test
@@ -29,5 +30,12 @@ public class rate_test {
 		}
 
 		assertEquals("No rate found for credit score: " + score, message);
+		test2 = null;
+	}
+
+	@Test
+	public void pmntTest() {
+		double pmt = RateBLL.getPayment(.04, 360, 300000, 0, true); // r = rate, n = number of periods, p = present value, f = future value, t = due at beginning?
+		assertEquals(1432.25, pmt, .000001);
 	}
 }
