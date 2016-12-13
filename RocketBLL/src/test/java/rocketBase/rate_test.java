@@ -4,17 +4,30 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class rate_test {
+import exceptions.RateException;
 
-	//TODO - RocketBLL rate_test
-	//		Check to see if a known credit score returns a known interest rate
-	
-	//TODO - RocketBLL rate_test
-	//		Check to see if a RateException is thrown if there are no rates for a given
-	//		credit score
+public class rate_test {
 	@Test
-	public void test() {
-		assert(1==1);
+	public void goodScoreTest() {
+		RateBLL test = new RateBLL();
+		try {
+			assertEquals(3.75, test.getRate(775), .0001);
+		} catch (RateException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 
+	@Test
+	public void badScoreTest() {
+		RateBLL test2 = new RateBLL();
+		int score = 200;
+		String message = "hello";
+		try {
+			test2.getRate(score);
+		} catch (RateException e) {
+			message = e.getMessage();
+		}
+
+		assertEquals("No rate found for credit score: " + score, message);
+	}
 }
